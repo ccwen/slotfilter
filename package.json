@@ -1,0 +1,11 @@
+{
+  "name": "slotfilter",
+  "description": "slot filter",
+  "version": "0.1",
+  "main": "index.html",
+  "window": {
+    "toolbar": true,
+    "width": 660,
+    "height": 500
+  }
+}
