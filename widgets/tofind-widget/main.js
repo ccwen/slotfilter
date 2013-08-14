@@ -8,7 +8,7 @@ define(['underscore','text!./tofind.tmpl'], function(_,template) {
         if (this.timer) clearTimeout(this.timer);
         var that=this;
         this.timer=setTimeout(function(){
-          that.sandbox.emit('tofind.change',{tofind:that.$("#tofind").val()} );
+          that.sandbox.emit('tofind.change',that.$("#tofind").val());
         },300);
     },
     ydbchanged:function() {

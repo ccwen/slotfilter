@@ -1,3 +1,10 @@
+/*
+  2013.8.14 start using Epoxy to do smart binding.
+  DOM render is minimized.
+  computed value is very useful.
+  input : list of ydb
+  output: selected ydb
+*/
 define(['underscore','backbone','text!./ydbselector.tmpl'], 
  function(_,Backbone,template) {
  var myModel=Backbone.Epoxy.Model.extend({

@@ -4,10 +4,15 @@ define(['underscore','backbone','text!./slottexts.tmpl'],
    type:"Backbone",
     events: {
     },
-    render: function () {
-      this.$el.html(_.template (template,{slots:[ {text:'qqqqq',n:1} ]}));
+    render: function (data) {
+      var slottexts=[];
+      for (var i in data) {
+        slottexts.push( {text:data[i],n:i} );
+      }
+      this.$el.html(_.template (template,{slots:slottexts}));
     },
     initialize: function() {
+      this.sandbox.on("slottexts.change",this.render,this);
       this.render();
     }
   }

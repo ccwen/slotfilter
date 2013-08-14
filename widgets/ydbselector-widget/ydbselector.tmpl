@@ -3,9 +3,8 @@
   <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span>
   </button>
  <ul class="dropdown-menu">
+ 	 <!-- only input and textarea can trigger change event//-->
  <%if (ydbs) for (var i=0;i<ydbs.length;i++) { %>
- <!-- only input and textarea can trigger change event//-->
-
 	<li><a class="dropdown-item"><label><input type='radio'  href="#" value="<%=i%>" data-bind="checked:selected"><%=ydbs[i]%></a></input></label></li>
    <%}%>
    </ul>
