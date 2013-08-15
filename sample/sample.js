@@ -1,5 +1,5 @@
 ﻿console.log(require('yase').build({
-	dbid:'lesson2',
+	dbid:'sample',
 	blockshift:7,
 	schema:function() {
 		this.toctag(["sutra","chapter"])
