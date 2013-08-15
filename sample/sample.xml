@@ -1,0 +1,49 @@
+<root>
+<pb id="1"/>
+<sutra>Sutra 1</sutra>
+this is text of sutra 1
+<chapter n="1.1">chapter 1</chapter>
+this is text of chapter 1 of sutra 1
+<chapter n="1.2">chapter 2</chapter>
+this is text of chapter 2 of sutra 1
+
+<sutra>Sutra 2</sutra>
+
+this is text of sutra 2
+<chapter n="2.1">chapter 1</chapter>
+this is text of chapter 1 of sutra 2
+<chapter n="2.2">chapter 2</chapter>
+this is text of chapter 2 of sutra 2
+
+<sutra>Sutra 3</sutra>
+
+this is text of sutra 3
+<chapter n="3.1">chapter 1</chapter>
+this is text of chapter 1 of sutra 3
+<chapter n="3.2">chapter 2</chapter>
+this is text of <pb id="2"/>chapter 2 of sutra 3
+
+<sutra>Sutra 4</sutra>
+
+this is text of sutra 4
+<chapter n="4.1">chapter 1</chapter>
+this is text of chapter 1 of sutra 4
+<chapter n="4.2">chapter 2</chapter>
+this is text of chapter 2 of sutra 4
+
+<sutra>Sutra 5</sutra>
+
+this is text of sutra 5
+<chapter n="5.1">chapter 1</chapter>
+this is text of chapter 1 of sutra 5
+<chapter n="5.2">chapter 2</chapter>
+this is text of chapter 2 of sutra 5
+
+<sutra>Sutra 6</sutra>
+
+this is text of <pb id="3"/>sutra 6
+<chapter n="6.1">chapter 1</chapter>
+this is text of chapter 1 of sutra 6
+<chapter n="6.2">chapter 2</chapter>
+this is text of chapter 2 of sutra 6
+</root>

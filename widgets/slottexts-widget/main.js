@@ -19,6 +19,7 @@ define(['underscore','backbone','text!./slottexts.tmpl','text!./item.tmpl'],
     render: function (data) {
       if (!data) return;
       this.slottexts=[];
+      this.displayed=0;
       for (var i in data) {
         this.slottexts.push( {text:data[i],n:i} );
       }
