@@ -10,7 +10,7 @@ define(['underscore','backbone','text!./slottexts.tmpl','text!./item.tmpl'],
       this.$el.unbind('scroll');
       this.$el.bind("scroll", function() {
         if (that.$el.scrollTop()+ that.$el.innerHeight()+3> that.$el[0].scrollHeight) {
-          that.loadmore();
+          that.loadscreenful();
         }
       });
 
@@ -22,20 +22,24 @@ define(['underscore','backbone','text!./slottexts.tmpl','text!./item.tmpl'],
       for (var i in data) {
         this.slottexts.push( {text:data[i],n:i} );
       }
-      var slotperbatch=this.options.slotperbatch || 20;
-      this.displayed=slotperbatch;
-      this.$el.html(_.template (template,{itemtemplate:itemtemplate,slotperbatch:slotperbatch,slots:this.slottexts}));
+      this.$el.html(_.template (template,{}));
       this.resize();
+      this.loadscreenful();
+      //TODO if still have space, load more
     },
-    loadmore:function() {
+    loadscreenful:function() {
+      var screenheight=this.$el.innerHeight();
+      var $listgroup=$(".list-group");
+      var startheight=$listgroup.height();
       if (this.displayed>=this.slottexts.length) return;
-      var slotperbatch=this.options.slotperbatch || 20;
-      var now=this.displayed+1;
-      this.displayed+=slotperbatch;
-      var newitems="";
-      for (var i=now;i<this.displayed && i<this.slottexts.length;i++ ) {
-        newitems+=_.template(itemtemplate,{text:this.slottexts[i].text ,n:this.slottexts[i].n})
+      var now=this.displayed||0;
+      var newitems="",H=0;
+      for (var i=now;i<this.slottexts.length;i++ ) {
+        newitem=_.template(itemtemplate,{text:this.slottexts[i].text ,n:this.slottexts[i].n});
+        $listgroup.append(newitem); // this is slow  to get newitem height()
+        if ($listgroup.height()-startheight>screenheight) break;
       }
+      this.displayed=i+1;
       $(".list-group").append(newitems);
     },
     initialize: function() {
