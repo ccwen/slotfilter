@@ -10,8 +10,31 @@ define(['backbone'], function(Backbone) {
     		this.sandbox.emit("slottexts.change",{});
     		return ;
     	} 
+
+    	if (tofind[0]==':') {
+    		return this.filterbylinenumer(db,parseInt(tofind.substring(1)));
+
+    	} else if (tofind[0]=='<') {
+    		return this.filterbytag(db,tofind.substring(1));
+    	} else return this.filterbytofind(db,tofind);
+    },
+    filterbytofind:function(db,tofind) {
     	var that=this;
     	this.sandbox.yase.phraseSearch({db:db,tofind:tofind,showtext:true},function(err,data) {
+    		that.sandbox.emit("slottexts.change",data);
+    	});
+    },
+    filterbytag:function(db,tag) {
+    	this.sandbox.yadb.getRaw([db,'tags',tag,'_slot','*'],function(err,slots) {
+    		that.sandbox.yase.fillText( {db:db,slots:slots},function(err,data) {
+    			that.sandbox.emit("slottexts.change",data);
+    		});
+    	});
+    },
+    filterbylinenumer:function(db,linenumber){
+    	var slots=[];
+    	var that=this;
+    	this.sandbox.yase.getRange({db:db,start:linenumber,end:linenumber+500},function(err,data) {
     		that.sandbox.emit("slottexts.change",data);
     	});
     },
