@@ -1,3 +1,4 @@
 hl {background:yellow}
 sutra {font-size:200%;}
 chapter {font-size:150%;}
+pb:before {color: brown; content: "[" attr(id) "]" };

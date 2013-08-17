@@ -34,14 +34,13 @@ define(['underscore','backbone','text!./slottexts.tmpl','text!./item.tmpl'],
       var startheight=$listgroup.height();
       if (this.displayed>=this.slottexts.length) return;
       var now=this.displayed||0;
-      var newitems="",H=0;
+      var H=0;
       for (var i=now;i<this.slottexts.length;i++ ) {
         newitem=_.template(itemtemplate,{text:this.slottexts[i].text ,n:this.slottexts[i].n});
         $listgroup.append(newitem); // this is slow  to get newitem height()
         if ($listgroup.height()-startheight>screenheight) break;
       }
       this.displayed=i+1;
-      $(".list-group").append(newitems);
     },
     initialize: function() {
       $(window).resize( _.bind(this.resize,this) );

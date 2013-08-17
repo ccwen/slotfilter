@@ -24,12 +24,29 @@ define(['backbone'], function(Backbone) {
     		that.sandbox.emit("slottexts.change",data);
     	});
     },
+
     filterbytag:function(db,tag) {
-    	this.sandbox.yadb.getRaw([db,'tags',tag,'_slot','*'],function(err,slots) {
-    		that.sandbox.yase.fillText( {db:db,slots:slots},function(err,data) {
-    			that.sandbox.emit("slottexts.change",data);
-    		});
-    	});
+      if (tag.indexOf("[")==-1) {
+        this.sandbox.yadb.getRaw([db,'tags',tag,'_slot','*'],function(err,slots) {
+          that.sandbox.yase.fillText( {db:db,slots:slots},function(err,data) {
+            that.sandbox.emit("slottexts.change",data);
+          });
+        });        
+      } else { // attribute 
+          var m=tag.match(/(.*?)\[(.*?)=(.*)/);
+          if (!m) return;
+          var tag=m[1], attribute=m[2],value=m[3];
+          if (value[value.length-1]===']') value=value.substring(0,value.length-1);
+          this.sandbox.yase.findTag( {db:db, tag:tag, attribute:attribute, value:value},function(err,tagdata){
+            var data={};
+            if (tagdata.slot)    {
+              data[ tagdata.slot] =tagdata.head || tagdata.text;
+            } else if (tagdata.length){
+                for (var i in tagdata) data[ tagdata[i].slot] =tagdata[i].head || tagdata[i].text;
+            }
+            that.sandbox.emit("slottexts.change",data);
+          });
+      }
     },
     filterbylinenumer:function(db,linenumber){
     	var slots=[];

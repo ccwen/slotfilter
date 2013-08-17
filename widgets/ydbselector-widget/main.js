@@ -9,7 +9,7 @@ define(['underscore','backbone','text!./ydbselector.tmpl'],
  function(_,Backbone,template) {
  var myModel=Backbone.Epoxy.Model.extend({
        "defaults":{
-          "listing":[],"selected":-1
+          "listing":[],"selected":0
         },
         "computeds": {
           "selectedYdb": {
