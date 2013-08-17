@@ -56,7 +56,9 @@ define(['backbone'], function(Backbone) {
     	});
     },
     model:new Backbone.Model(),
-    initialize: function() {
+    initialize: function() {;
+      if (!this.sandbox.minversion('yase','0.0.8')) console.error('yase version too old');
+      if (!this.sandbox.minversion('yadb','0.0.6')) console.error('yadb version too old');
       var that=this;
       this.sandbox.on("tofind.change",function(data) {
       	that.model.set({tofind:data})
