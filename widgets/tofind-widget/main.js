@@ -18,6 +18,7 @@ define(['underscore','text!./tofind.tmpl'], function(_,template) {
     ydbchanged:function() {
       this.$el.find("#tofind").focus();
       var tofind=localStorage.getItem("tofind");
+
       if (tofind) {
           $("#tofind").val(tofind);
           this.dosearch();

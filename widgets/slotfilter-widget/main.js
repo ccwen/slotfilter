@@ -12,7 +12,7 @@ define(['backbone'], function(Backbone) {
     	} 
 
     	if (tofind[0]==':') {
-    		return this.filterbylinenumer(db,parseInt(tofind.substring(1)));
+    		return this.filterbylinenumer(db,parseInt(tofind.substring(1),10));
 
     	} else if (tofind[0]=='<') {
     		return this.filterbytag(db,tofind.substring(1));
@@ -20,15 +20,15 @@ define(['backbone'], function(Backbone) {
     },
     filterbytofind:function(db,tofind) {
     	var that=this;
-    	this.sandbox.yase.phraseSearch({db:db,tofind:tofind,showtext:true},function(err,data) {
+    	this.sandbox.yase.phraseSearch({db:db,tofind:tofind,showtext:true,highlight:true},function(err,data) {
     		that.sandbox.emit("slottexts.change",data);
     	});
     },
 
     filterbytag:function(db,tag) {
       if (tag.indexOf("[")==-1) {
-        this.sandbox.yadb.getRaw([db,'tags',tag,'_slot','*'],function(err,slots) {
-          that.sandbox.yase.fillText( {db:db,slots:slots},function(err,data) {
+        this.sandbox.yadb.getRaw([db,'tags',tag,'_vpos','*'],function(err,vposarr) {
+          that.sandbox.yase.fillText( {db:db,vpos:vposarr},function(err,data) {
             that.sandbox.emit("slottexts.change",data);
           });
         });        
