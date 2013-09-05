@@ -10,6 +10,7 @@
 	output:'../sample.ydb',
 	author:'yapcheahshen@gmail.com',
 	version:'0.0.2',
+	outputencoding:'ucs2',
 	estimatesize:100000
 	 //maxfile:0  //
 }));
