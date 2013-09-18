@@ -1,6 +1,6 @@
 ﻿console.log(require('yase').build({
 	dbid:'sample',
-	blockshift:7,
+	slotshift:7,
 	schema:function() {
 		this.toctag(["sutra","chapter"])
 		      .emptytag("pb").attr("pb","id",{"depth":2})
