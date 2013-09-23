@@ -18,11 +18,8 @@ define(['underscore','backbone','text!./slottexts.tmpl','text!./item.tmpl'],
     
     render: function (data) {
       if (!data) return;
-      this.slottexts=[];
+      this.slottexts=data;
       this.displayed=0;
-      for (var i in data) {
-        this.slottexts.push( {text:data[i],n:i} );
-      }
       this.$el.html(_.template (template,{}));
       this.resize();
       this.loadscreenful();
@@ -36,7 +33,7 @@ define(['underscore','backbone','text!./slottexts.tmpl','text!./item.tmpl'],
       var now=this.displayed||0;
       var H=0;
       for (var i=now;i<this.slottexts.length;i++ ) {
-        newitem=_.template(itemtemplate,{text:this.slottexts[i].text ,n:this.slottexts[i].n});
+        var newitem=_.template(itemtemplate,this.slottexts[i]);
         $listgroup.append(newitem); // this is slow  to get newitem height()
         if ($listgroup.height()-startheight>screenheight) break;
       }
