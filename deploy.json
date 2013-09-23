@@ -1,0 +1,19 @@
+{
+	"files":[
+		"slotfilter/aura_components",
+		"slotfilter/sample",
+		"slotfilter/css",
+		"slotfilter/index.js",
+		"slotfilter/index.html",
+		"slotfilter/package.json",
+		"slotfilter/LICENSE",
+		"slotfilter/README.md"
+		"slotfilter/sample.ydb",
+	],
+	"osx" :[
+		"slotfilter/run.command"
+	],
+	"win32" :[
+		"slotfilter/run.cmd"
+	]	
+}
